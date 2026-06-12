@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF LOVER | Sharing & Connecting Documents</title>
+    <title>PDF LOVER | Free PDF Tools & Fun Features</title>
     <style>
         * {
             box-sizing: border-box;
@@ -76,71 +76,76 @@
             cursor: pointer;
         }
 
-        nav a:hover {
-            color: #d32f2f;
+        nav a:hover, .active-nav {
+            color: #d32f2f !important;
         }
 
-        .btn-premium {
-            background: linear-gradient(135deg, #e53935, #b71c1c);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(211, 47, 47, 0.2);
+        /* Advertisement Banner Spaces */
+        .ad-banner {
+            background-color: #f1f3f4;
+            border: 2px dashed #bdc1c6;
+            color: #70757a;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            max-width: 970px;
+            margin: 20px auto;
+            border-radius: 4px;
         }
 
-        /* Hero / Main dynamic workspace */
+        /* Hero / Main Content Layout */
         .hero {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background: #ffffff;
             border-bottom: 1px solid #eef2f5;
         }
 
         .hero-logo-showcase {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 15px auto;
         }
 
         .hero h1 {
-            font-size: 36px;
+            font-size: 34px;
             color: #222222;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 17px;
+            font-size: 16px;
             color: #666666;
             max-width: 650px;
             margin: 0 auto 25px auto;
             line-height: 1.6;
         }
 
-        /* Live Application Working Zone */
+        /* Interactive Workspace */
         .workspace-container {
             max-width: 600px;
             margin: 0 auto;
-            display: none; /* Hidden until a tool is chosen */
+            display: none;
         }
 
         .upload-box {
             background: #fff;
             border: 3px dashed #d32f2f;
             border-radius: 16px;
-            padding: 40px 20px;
+            padding: 45px 20px;
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
-            position: relative;
+            transition: background 0.2s;
         }
 
-        .upload-box.dragover {
+        .upload-box:hover {
             background: #ffebee;
-            border-color: #b71c1c;
         }
 
         .upload-box icon {
-            font-size: 48px;
+            font-size: 50px;
             display: block;
             margin-bottom: 15px;
         }
@@ -151,17 +156,41 @@
             color: #222;
         }
 
-        .upload-box p {
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* File input element hidden purposefully */
         #file-input {
             display: none;
         }
 
-        /* Processing and Success Screen States */
+        /* Unique Tool Layouts (Love Calculator & Image Compressor Controls) */
+        .custom-tool-panel {
+            background: #ffffff;
+            border: 1px solid #eef2f5;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: none;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* Status Screens */
         .status-screen {
             display: none;
             padding: 30px;
@@ -188,58 +217,56 @@
 
         .btn-action {
             display: inline-block;
-            background: #2e7d32;
+            background: #d32f2f;
             color: white;
-            padding: 12px 30px;
+            padding: 14px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
-            transition: background 0.2s;
-            cursor: pointer;
-            border: none;
             font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
         }
 
-        .btn-action:hover {
-            background: #1b5e20;
+        .btn-action.success {
+            background: #2e7d32;
         }
 
         .btn-reset {
             display: inline-block;
-            background: #757575;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
+            color: #d32f2f;
+            text-decoration: underline;
             margin-top: 15px;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
+            font-weight: 600;
         }
 
-        /* Tools Grid Layout */
+        /* Grid Setup */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 20px auto 60px auto;
             padding: 0 20px;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 25px;
         }
 
         .tool-card {
             background: #ffffff;
             border-radius: 12px;
-            padding: 30px 24px;
+            padding: 25px 20px;
             text-align: left;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
             border: 1px solid #eef2f5;
-            border-top: 4px solid #d32f2f;
+            border-top: 4px solid #4a5568;
         }
 
         .tool-card:hover {
@@ -247,20 +274,25 @@
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
         }
 
+        .tool-card.fun-feature {
+            border-top-color: #d32f2f;
+            background: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%);
+        }
+
         .tool-icon {
             font-size: 32px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: inline-block;
         }
 
         .tool-card h3 {
-            font-size: 19px;
+            font-size: 18px;
             margin-bottom: 8px;
             color: #222222;
         }
 
         .tool-card p {
-            font-size: 14px;
+            font-size: 13.5px;
             color: #666666;
             line-height: 1.5;
         }
@@ -271,13 +303,14 @@
             color: #aaaaaa;
             text-align: center;
             padding: 35px;
-            margin-top: 80px;
             font-size: 14px;
             border-top: 4px solid #d32f2f;
         }
     </style>
 </head>
 <body>
+
+    <div class="ad-banner">RESPONSIVE ADVERTISEMENT BANNER PLACEHOLDER (E.G., GOOGLE ADSENSE)</div>
 
     <header>
         <div class="brand-container" onclick="resetToHome()">
@@ -299,10 +332,10 @@
             </div>
         </div>
         <nav>
+            <a onclick="openTool('Doc to PDF')">Doc to PDF</a>
+            <a onclick="openTool('PDF to Doc')">PDF to Doc</a>
             <a onclick="openTool('Merge PDF')">Merge PDF</a>
-            <a onclick="openTool('Split PDF')">Split PDF</a>
-            <a onclick="openTool('Compress PDF')">Compress</a>
-            <a class="btn-premium">Go Premium</a>
+            <a onclick="openTool('Love Checker')" style="color: #d32f2f;">❤️ Love Test</a>
         </nav>
     </header>
 
@@ -323,75 +356,103 @@
         </div>
         
         <h1 id="main-title">Every tool you need to work with PDFs in one place</h1>
-        <p id="main-subtitle">Welcome to PDF LOVER. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.</p>
+        <p id="main-subtitle">Welcome to PDF LOVER. Your platform to process file tasks seamlessly while staying connected.</p>
 
         <div class="workspace-container" id="app-workspace">
+            
             <div class="upload-box" id="drop-zone" onclick="triggerFileInput()">
-                <span style="font-size: 50px;">📥</span>
+                <span id="tool-upload-icon" style="font-size: 50px; display:block; margin-bottom:10px;">📥</span>
                 <h3 id="upload-box-title">Select files to upload</h3>
-                <p>or drag and drop files here</p>
+                <p id="upload-box-instruction">or drag and drop files here</p>
                 <input type="file" id="file-input" onchange="handleFileSelect(event)">
+            </div>
+
+            <div class="custom-tool-panel" id="love-calculator-panel">
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="name1" class="form-control" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Partner's Name:</label>
+                    <input type="text" id="name2" class="form-control" placeholder="Enter their full name">
+                </div>
+                <button class="btn-action" onclick="calculateLovePercentage()">Check Compatibility %</button>
             </div>
 
             <div class="status-screen" id="status-area">
                 <div id="loading-state">
                     <div class="spinner"></div>
                     <h3 id="status-title">Processing file...</h3>
-                    <p>Optimizing your data layers carefully.</p>
+                    <p>Optimizing data variables securely.</p>
                 </div>
                 <div id="success-state" style="display:none;">
-                    <span style="font-size: 50px;">🎉</span>
-                    <h3 style="margin: 10px 0;">Task Complete!</h3>
+                    <span id="success-icon" style="font-size: 50px;">🎉</span>
+                    <h3 id="success-headline" style="margin: 10px 0;">Task Complete!</h3>
                     <p id="file-info-text" style="color:#555; margin-bottom: 15px; font-weight: bold;"></p>
-                    <button class="btn-action" onclick="simulateDownload()">Download Processed File</button>
+                    <button id="download-btn" class="btn-action success" onclick="simulateDownload()">Download Output File</button>
                     <br>
-                    <div class="btn-reset" onclick="resetWorkspaceOnly()">Upload another file</div>
+                    <div class="btn-reset" onclick="resetWorkspaceOnly()">Try Another Task</div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <div class="container" id="tools-section">
         <div class="tools-grid">
             
-            <div class="tool-card" onclick="openTool('Merge PDF')">
+            <div class="tool-card" onclick="openTool('Doc to PDF', '📄')">
+                <div class="tool-icon">📄</div>
+                <h3>Doc to PDF</h3>
+                <p>Convert Microsoft Word document files into fully formatted PDFs cleanly.</p>
+            </div>
+
+            <div class="tool-card" onclick="openTool('PDF to Doc', '📝')">
+                <div class="tool-icon">📝</div>
+                <h3>PDF to Doc</h3>
+                <p>Extract strings and text layers out into editable Word configurations.</p>
+            </div>
+
+            <div class="tool-card" onclick="openTool('Image to PDF', '🖼️')">
+                <div class="tool-icon">🖼️</div>
+                <h3>Image to PDF</h3>
+                <p>Compile standard images or screenshot photos directly into unified PDF pages.</p>
+            </div>
+
+            <div class="tool-card" onclick="openTool('Merge PDF', '📂')">
                 <div class="tool-icon">📂</div>
                 <h3>Merge PDF</h3>
-                <p>Combine multiple PDF files into a single structured document effortlessly.</p>
+                <p>Combine multiple independent file packages into a single compiled document.</p>
             </div>
 
-            <div class="tool-card" onclick="openTool('Split PDF')">
-                <div class="tool-icon">✂️</div>
-                <h3>Split PDF</h3>
-                <p>Extract exact pages or isolate separate sets into independent files.</p>
-            </div>
-
-            <div class="tool-card" onclick="openTool('Compress PDF')">
+            <div class="tool-card" onclick="openTool('Compress PDF', '🗜️')">
                 <div class="tool-icon">🗜️</div>
                 <h3>Compress PDF</h3>
-                <p>Shrink file size instantly while retaining maximum presentation quality.</p>
+                <p>Reduce system byte sizing down while minimizing resolution artifacts.</p>
             </div>
 
-            <div class="tool-card" onclick="openTool('PDF to Word')">
-                <div class="tool-icon">📝</div>
-                <h3>PDF to Word</h3>
-                <p>Convert text and tables from PDF layouts into editable Word files.</p>
+            <div class="tool-card" onclick="openTool('Image Compressor (Target 200KB)', '📉')">
+                <div class="tool-icon">📉</div>
+                <h3>Image Compressor</h3>
+                <p>Compress heavy PNG/JPG snapshots down safely under a **strict 200 KB ceiling**.</p>
             </div>
 
-            <div class="tool-card" onclick="openTool('Excel to PDF')">
-                <div class="tool-icon">📊</div>
-                <h3>Excel to PDF</h3>
-                <p>Transform raw spreadsheets accurately into perfectly aligned document views.</p>
+            <div class="tool-card" onclick="openTool('HTML to PDF', '🌐')">
+                <div class="tool-icon">🌐</div>
+                <h3>HTML to PDF</h3>
+                <p>Render live web-page configurations instantly into print-ready sheets.</p>
             </div>
 
-            <div class="tool-card" onclick="openTool('JPG to PDF')">
-                <div class="tool-icon">🖼️</div>
-                <h3>JPG to PDF</h3>
-                <p>Turn images and scans into standardized, clean PDF attachments.</p>
+            <div class="tool-card fun-feature" onclick="openTool('Love Checker', '💖')">
+                <div class="tool-icon">💖</div>
+                <h3>Love % Checker</h3>
+                <p>Discover thematic alignment matches instantly using your custom name pairings!</p>
             </div>
 
         </div>
     </div>
+
+    <div class="ad-banner" style="margin-bottom: 60px;">RESPONSIVE ADVERTISEMENT BANNER PLACEHOLDER (E.G., GOOGLE ADSENSE)</div>
 
     <footer>
         &copy; 2026 PDF LOVER. All rights reserved.<br>
@@ -401,34 +462,38 @@
     <script>
         let currentActiveTool = "";
         const dropZone = document.getElementById('drop-zone');
+        const lovePanel = document.getElementById('love-calculator-panel');
 
-        // Navigates and transforms interface state context into specific tool workspace
-        function openTool(toolName) {
+        function openTool(toolName, iconEmoji) {
             currentActiveTool = toolName;
             
-            // Hide dashboard grid graphic elements
             document.getElementById('home-graphic').style.display = 'none';
             document.getElementById('tools-section').style.display = 'none';
             
-            // Change Text elements contextually 
             document.getElementById('main-title').innerText = toolName;
-            document.getElementById('main-subtitle').innerText = `Upload your files here to perform the dynamic ${toolName} engine processes safely.`;
-            document.getElementById('upload-box-title').innerText = `Select files to ${toolName}`;
+            document.getElementById('main-subtitle').innerText = `Run processing optimization using our dedicated ${toolName} engine features instantly.`;
             
-            // Unveil Workspace block
             document.getElementById('app-workspace').style.display = 'block';
             resetWorkspaceOnly();
+
+            if (toolName === "Love Checker") {
+                dropZone.style.display = 'none';
+                lovePanel.style.display = 'block';
+            } else {
+                dropZone.style.display = 'block';
+                lovePanel.style.display = 'none';
+                document.getElementById('tool-upload-icon').innerText = iconEmoji;
+                document.getElementById('upload-box-title').innerText = `Select data for ${toolName}`;
+            }
         }
 
-        // Returns app view to the main menu choice boards
         function resetToHome() {
             document.getElementById('home-graphic').style.display = 'block';
-            document.getElementById('tools-section').style.display = 'flex';
             document.getElementById('tools-section').style.display = 'block';
             document.getElementById('app-workspace').style.display = 'none';
             
             document.getElementById('main-title').innerText = "Every tool you need to work with PDFs in one place";
-            document.getElementById('main-subtitle').innerText = "Welcome to PDF LOVER. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.";
+            document.getElementById('main-subtitle').innerText = "Welcome to PDF LOVER. Your platform to process file tasks seamlessly while staying connected.";
         }
 
         function triggerFileInput() {
@@ -438,13 +503,14 @@
         function handleFileSelect(event) {
             const files = event.target.files;
             if(files.length > 0) {
-                processUploadedFileSimulation(files[0].name);
+                processToolAction(files[0].name);
             }
         }
 
-        // Processes simulated data timelines for processing loading wheels visual transitions
-        function processUploadedFileSimulation(fileName) {
+        function processToolAction(targetName) {
             dropZone.style.display = 'none';
+            lovePanel.style.display = 'none';
+            
             const statusArea = document.getElementById('status-area');
             const loadingState = document.getElementById('loading-state');
             const successState = document.getElementById('success-state');
@@ -452,48 +518,86 @@
             statusArea.style.display = 'block';
             loadingState.style.display = 'block';
             successState.style.display = 'none';
-            document.getElementById('status-title').innerText = `Processing file for ${currentActiveTool}...`;
+            
+            document.getElementById('status-title').innerText = `Running optimization algorithms for ${currentActiveTool}...`;
 
-            // Wait 2.5 seconds to mock real file processing engine delays
+            // Mocks variable loading timeline frames
             setTimeout(() => {
                 loadingState.style.display = 'none';
                 successState.style.display = 'block';
-                document.getElementById('file-info-text').innerText = `Target: ${fileName} successfully processed!`;
-            }, 2500);
+                document.getElementById('success-icon').innerText = "🎉";
+                document.getElementById('success-headline').innerText = "Process Finished Successfully!";
+                document.getElementById('download-btn').style.display = "inline-block";
+                
+                if (currentActiveTool.includes("Image Compressor")) {
+                    document.getElementById('file-info-text').innerText = `Target File: ${targetName}\nOptimized size: 184 KB (Safely compressed below 200 KB limit)`;
+                } else {
+                    document.getElementById('file-info-text').innerText = `Your formatted ${currentActiveTool} output file package is complete.`;
+                }
+            }, 2000);
+        }
+
+        function calculateLovePercentage() {
+            const n1 = document.getElementById('name1').value.trim();
+            const n2 = document.getElementById('name2').value.trim();
+            
+            if(!n1 || !n2) {
+                alert("Please insert names inside both entry cells to verify love algorithm metrics.");
+                return;
+            }
+
+            lovePanel.style.display = 'none';
+            const statusArea = document.getElementById('status-area');
+            const loadingState = document.getElementById('loading-state');
+            const successState = document.getElementById('success-state');
+            
+            statusArea.style.display = 'block';
+            loadingState.style.display = 'block';
+            successState.style.display = 'none';
+            document.getElementById('status-title').innerText = "Running algorithmic compatibility calculations...";
+
+            setTimeout(() => {
+                // Generates deterministic pseudo-random love percentage based on name configurations
+                const seedValue = (n1 + n2).toLowerCase().charCodeAt(0) || 50;
+                const calculatedScore = 50 + (seedValue % 51); 
+
+                loadingState.style.display = 'none';
+                successState.style.display = 'block';
+                
+                document.getElementById('success-icon').innerText = "💝";
+                document.getElementById('success-headline').innerText = `Result: ${calculatedScore}% Compatibility Score!`;
+                document.getElementById('file-info-text').innerText = `Affiliation metrics evaluated for ${n1} & ${n2}.`;
+                document.getElementById('download-btn').style.display = "none"; // Hide download button since it's just a text result
+            }, 1800);
         }
 
         function simulateDownload() {
-            alert(`Success! Downloading your processed ${currentActiveTool} document directly from PDF LOVER servers now.`);
+            alert(`Your processed file from the "${currentActiveTool}" engine has been generated and downloaded.`);
             resetToHome();
         }
 
         function resetWorkspaceOnly() {
-            dropZone.style.display = 'block';
+            if(currentActiveTool === "Love Checker") {
+                dropZone.style.display = 'none';
+                lovePanel.style.display = 'block';
+                document.getElementById('name1').value = "";
+                document.getElementById('name2').value = "";
+            } else {
+                dropZone.style.display = 'block';
+                lovePanel.style.display = 'none';
+            }
             document.getElementById('status-area').style.display = 'none';
             document.getElementById('file-input').value = "";
         }
 
-        // File Drag & Drop visual listening interactions hooks
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZone.classList.add('dragover');
-            }, false);
+        // Standard Drag and drop event listeners
+        ['dragenter', 'dragover'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); }, false);
         });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZone.classList.remove('dragover');
-            }, false);
-        });
-
         dropZone.addEventListener('drop', (e) => {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            if(files.length > 0) {
-                processUploadedFileSimulation(files[0].name);
-            }
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            if(files.length > 0) processToolAction(files[0].name);
         });
     </script>
 </body>
