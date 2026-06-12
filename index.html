@@ -3,195 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Lover - Free Document & Image to PDF Converter</title>
-    <!-- Tailwind CSS for modern, clean styling -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- jsPDF Library for image-to-pdf conversion -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- docx2pdf logic placeholder or mammal conversion library if needed, using native browser printing for wide doc support -->
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-screen justify-between min-h-screen">
+    <title>PDF LOVER | Sharing & Connecting Documents</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
 
-    <!-- Header / Navigation -->
-    <header class="bg-white shadow-sm border-b border-slate-100">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="Pdflover.png" alt="PDF Lover Logo" class="h-8 w-auto">
-                <h1 class="text-2xl font-bold text-red-500 tracking-tight">PDF <span class="text-slate-700">Lover</span></h1>
+        body {
+            background-color: #f7f9fa;
+            color: #333333;
+        }
+
+        /* Header / Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Responsive SVG Logo Brand Setup */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-main-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: #333333;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-main-text span {
+            color: #d32f2f;
+            font-weight: 400;
+        }
+
+        .logo-tagline {
+            font-size: 8.5px;
+            color: #777777;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #d32f2f;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #e53935, #b71c1c);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(211, 47, 47, 0.2);
+        }
+
+        .btn-premium:hover {
+            background: #b71c1c;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 70px 20px 50px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        /* Center Showcase Logo for Landing Page */
+        .hero-logo-showcase {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px auto;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            color: #222222;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666666;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Tools Grid Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 24px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid #eef2f5;
+            border-top: 4px solid #d32f2f; /* Matching Red Accent Brand Line */
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .tool-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .tool-card h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+            color: #222222;
+        }
+
+        .tool-card p {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: #222222;
+            color: #aaaaaa;
+            text-align: center;
+            padding: 35px;
+            margin-top: 80px;
+            font-size: 14px;
+            border-top: 4px solid #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-container">
+            <svg width="42" height="42" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M250 440C180 380 70 290 70 185C70 115 125 60 195 60C218 60 236 66 250 78C264 66 282 60 305 60C375 60 430 115 430 185C430 250 390 310 340 360" stroke="url(#logo-grad)" stroke-width="32" stroke-linecap="round"/>
+                <rect x="160" y="150" width="180" height="200" rx="15" fill="url(#logo-grad)"/>
+                <path d="M290 150 L340 200 L290 200 Z" fill="#ffffff" opacity="0.8"/>
+                <text x="250" y="285" fill="white" font-family="Arial" font-weight="900" font-size="65" text-anchor="middle">PDF</text>
+                <defs>
+                    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ef5350" />
+                        <stop offset="100%" stop-color="#b71c1c" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="logo-text-wrapper">
+                <div class="logo-main-text">PDF <span>LOVER</span></div>
+                <div class="logo-tagline">Sharing & Connecting Documents</div>
             </div>
-            <p class="text-sm text-slate-500 hidden sm:block">100% Free & Secure Conversion</p>
-        </div>
+        </a>
+        <nav>
+            <a href="#">Merge PDF</a>
+            <a href="#">Split PDF</a>
+            <a href="#">Compress</a>
+            <a href="#">Convert</a>
+            <a href="#" class="btn-premium">Go Premium</a>
+        </nav>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="max-w-5xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-4 gap-6">
-        
-        <!-- Left Sidebar: Monetization / Ad Space 1 -->
-        <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-center items-center min-h-[250px] md:col-span-1">
-            <span class="text-xs font-semibold tracking-wider text-slate-400 uppercase mb-2">Sponsored Content</span>
-            <div class="w-full h-full bg-slate-100 rounded-lg flex items-center justify-center text-slate-400 text-sm p-4 text-center border border-dashed border-slate-300">
-                <!-- Replace this div with your Google AdSense code block -->
-                <p>Ad Space #1<br><span class="text-xs text-slate-400">(Earn money here)</span></p>
-            </div>
+    <section class="hero">
+        <div class="hero-logo-showcase">
+            <svg width="100%" height="100%" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M250 440C180 380 70 290 70 185C70 115 125 60 195 60C218 60 236 66 250 78C264 66 282 60 305 60C375 60 430 115 430 185C430 250 390 310 340 360" stroke="url(#hero-logo-grad)" stroke-width="32" stroke-linecap="round"/>
+                <rect x="160" y="150" width="180" height="200" rx="15" fill="url(#hero-logo-grad)"/>
+                <path d="M290 150 L340 200 L290 200 Z" fill="#ffffff" opacity="0.8"/>
+                <text x="250" y="285" fill="white" font-family="Arial" font-weight="900" font-size="65" text-anchor="middle">PDF</text>
+                <defs>
+                    <linearGradient id="hero-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ef5350" />
+                        <stop offset="100%" stop-color="#b71c1c" />
+                    </linearGradient>
+                </defs>
+            </svg>
         </div>
+        <h1>Every tool you need to work with PDFs in one place</h1>
+        <p>Welcome to <strong>PDF LOVER</strong>. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.</p>
+    </section>
 
-        <!-- Center: The Core Converter Widget -->
-        <div class="md:col-span-2 bg-white p-6 rounded-2xl shadow-md border border-slate-100 flex flex-col justify-between">
-            <div>
-                <h2 class="text-xl font-bold text-slate-800 mb-2 text-center">Convert Images to PDF</h2>
-                <p class="text-sm text-slate-500 text-center mb-6">Select JPG, PNG, or WebP images to instantly merge into a clean PDF document.</p>
-                
-                <!-- Dropzone Area -->
-                <div id="dropzone" class="border-2 border-dashed border-red-200 hover:border-red-400 bg-red-50/30 hover:bg-red-50/60 transition-all rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer mb-6 group">
-                    <span class="text-4xl group-hover:scale-110 transition-transform mb-3">📸</span>
-                    <p class="font-medium text-slate-700">Click to upload or drag & drop</p>
-                    <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, JPEG, WEBP</p>
-                    <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
-                </div>
-
-                <!-- File List Preview -->
-                <div id="fileListContainer" class="hidden mb-6">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Selected Files</h3>
-                    <ul id="fileList" class="space-y-2 max-h-40 overflow-y-auto pr-1"></ul>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <button id="convertBtn" disabled class="w-full py-3.5 px-4 bg-slate-200 text-slate-400 font-semibold rounded-xl cursor-not-allowed transition-all text-center flex justify-center items-center gap-2">
-                Convert and Download PDF
-            </button>
-        </div>
-
-        <!-- Right Sidebar: Monetization / Ad Space 2 & Support -->
-        <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between gap-4 md:col-span-1">
-            <div class="bg-slate-100 rounded-lg flex-1 flex items-center justify-center text-slate-400 text-sm p-4 text-center border border-dashed border-slate-300 min-h-[150px]">
-                <!-- Replace this div with your second Google AdSense code block -->
-                <p>Ad Space #2<br><span class="text-xs text-slate-400">(Earn money here)</span></p>
-            </div>
+    <div class="container">
+        <div class="tools-grid">
             
-            <!-- Optional Donation Support (Extra earnings) -->
-            <a href="https://www.buymeacoffee.com" target="_blank" class="w-full py-2.5 px-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-medium rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1.5">
-                ☕ Support PDF Lover
-            </a>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 PDF Lover. Your files never leave your device (100% Private).</p>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <div class="tool-card">
+                <div class="tool-icon">📂</div>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDF files into a single structured document effortlessly.</p>
             </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">✂️</div>
+                <h3>Split PDF</h3>
+                <p>Extract exact pages or isolate separate sets into independent files.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">🗜️</div>
+                <h3>Compress PDF</h3>
+                <p>Shrink file size instantly while retaining maximum presentation quality.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>PDF to Word</h3>
+                <p>Convert text and tables from PDF layouts into editable Word files.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">📊</div>
+                <h3>Excel to PDF</h3>
+                <p>Transform raw spreadsheets accurately into perfectly aligned document views.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <h3>JPG to PDF</h3>
+                <p>Turn images and scans into standardized, clean PDF attachments.</p>
+            </div>
+
         </div>
+    </div>
+
+    <footer>
+        &copy; 2026 PDF LOVER. All rights reserved.<br>
+        <span style="font-size: 12px; color: #777;">Sharing & Connecting Documents</span>
     </footer>
 
-    <!-- Conversion JavaScript Logic -->
-    <script>
-        const dropzone = document.getElementById('dropzone');
-        const fileInput = document.getElementById('fileInput');
-        const convertBtn = document.getElementById('convertBtn');
-        const fileListContainer = document.getElementById('fileListContainer');
-        const fileList = document.getElementById('fileList');
-        
-        let selectedFiles = [];
-
-        // Trigger input file on click
-        dropzone.addEventListener('click', () => fileInput.click());
-
-        // Drag and drop styles
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('bg-red-50', 'border-red-400'); }, false);
-        });
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('bg-red-50', 'border-red-400'); }, false);
-        });
-
-        // Handle dropped files
-        dropzone.addEventListener('drop', (e) => {
-            handleFiles(e.dataTransfer.files);
-        });
-
-        // Handle selected files
-        fileInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
-        });
-
-        function handleFiles(files) {
-            const validImages = Array.from(files).filter(file => file.type.startsWith('image/'));
-            if(validImages.length === 0) return;
-
-            selectedFiles = [...selectedFiles, ...validImages];
-            updateUI();
-        }
-
-        function updateUI() {
-            if (selectedFiles.length > 0) {
-                fileListContainer.classList.remove('hidden');
-                convertBtn.removeAttribute('disabled');
-                convertBtn.className = "w-full py-3.5 px-4 bg-red-500 hover:bg-red-600 active:bg-red-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg shadow-red-500/20 cursor-pointer transition-all text-center flex justify-center items-center gap-2";
-                
-                fileList.innerHTML = '';
-                selectedFiles.forEach((file, index) => {
-                    const li = document.createElement('li');
-                    li.className = "flex justify-between items-center text-xs bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg text-slate-600";
-                    li.innerHTML = `
-                        <span class="truncate max-w-[180px] font-medium">${file.name}</span>
-                        <button onclick="removeFile(${index})" class="text-slate-400 hover:text-red-500 p-1 font-bold text-sm">✕</button>
-                    `;
-                    fileList.appendChild(li);
-                });
-            } else {
-                fileListContainer.classList.add('hidden');
-                convertBtn.setAttribute('disabled', 'true');
-                convertBtn.className = "w-full py-3.5 px-4 bg-slate-200 text-slate-400 font-semibold rounded-xl cursor-not-allowed transition-all text-center flex justify-center items-center gap-2";
-                fileList.innerHTML = '';
-            }
-        }
-
-        window.removeFile = function(index) {
-            selectedFiles.splice(index, 1);
-            updateUI();
-        }
-
-        // Image to PDF Conversion core execution logic
-        convertBtn.addEventListener('click', async () => {
-            if(selectedFiles.length === 0) return;
-            
-            convertBtn.innerText = "Processing Your PDF...";
-            convertBtn.setAttribute('disabled', 'true');
-
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF();
-
-            for (let i = 0; i < selectedFiles.length; i++) {
-                if (i > 0) pdf.addPage();
-                
-                const fileData = await readFileAsBase64(selectedFiles[i]);
-                
-                // Read image properties to fit perfectly inside page margins
-                const imgWidth = pdf.internal.pageSize.getWidth();
-                const imgHeight = pdf.internal.pageSize.getHeight();
-                
-                pdf.addImage(fileData, 'JPEG', 0, 0, imgWidth, imgHeight);
-            }
-
-            pdf.save('PDF_Lover_document.pdf');
-            
-            // Reset state
-            convertBtn.innerText = "Convert and Download PDF";
-            selectedFiles = [];
-            updateUI();
-        });
-
-        function readFileAsBase64(file) {
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result);
-                reader.readAsDataURL(file);
-            });
-        }
-    </script>
 </body>
 </html>
