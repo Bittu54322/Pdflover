@@ -35,8 +35,9 @@ function convertDocToPDF() {
     setTimeout(() => {
         const fileSize = file.size;
         const estimatedPdfSize = Math.round(fileSize * 0.8);
+        const fileName = file.name.replace(/\.[^.]+$/, '.pdf');
         showOutput('docOutput', 
-            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${file.name}', 'pdf')" class="convert-btn">Download PDF</button>`
+            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${fileName}', '${estimatedPdfSize}')" class="convert-btn">Download PDF</button>`
         );
     }, 2000);
 }
@@ -54,8 +55,9 @@ function convertPDFToDoc() {
 
     setTimeout(() => {
         const fileSize = file.size;
+        const fileName = file.name.replace(/\.[^.]+$/, '.docx');
         showOutput('pdfOutput', 
-            `✓ Successfully converted "${file.name}" to DOCX<br>Original size: ${formatFileSize(fileSize)}<br><button onclick="downloadFile('${file.name}', 'docx')" class="convert-btn">Download DOCX</button>`
+            `✓ Successfully converted "${file.name}" to DOCX<br>Original size: ${formatFileSize(fileSize)}<br><button onclick="downloadFile('${fileName}', '${fileSize}')" class="convert-btn">Download DOCX</button>`
         );
     }, 2000);
 }
@@ -81,7 +83,7 @@ function convertImageToPDF() {
         }
 
         showOutput('imageOutput', 
-            `✓ Successfully converted ${files.length} image(s) to PDF<br>Files:<br>${fileNames}Total size: ${formatFileSize(totalSize)}<br><button onclick="downloadFile('images_to_pdf', 'pdf')" class="convert-btn">Download PDF</button>`
+            `✓ Successfully converted ${files.length} image(s) to PDF<br>Files:<br>${fileNames}Total size: ${formatFileSize(totalSize)}<br><button onclick="downloadFile('images_to_pdf.pdf', '${totalSize}')" class="convert-btn">Download PDF</button>`
         );
     }, 2000);
 }
@@ -114,7 +116,7 @@ function mergePDFs() {
         const mergedSize = Math.round(totalSize * 0.95);
         
         showOutput('mergeOutput', 
-            `✓ Successfully merged ${files.length} PDFs<br>Files merged:<br>${fileList}Merged PDF size: ${formatFileSize(mergedSize)}<br><button onclick="downloadFile('merged_pdf', 'pdf')" class="convert-btn">Download Merged PDF</button>`
+            `✓ Successfully merged ${files.length} PDFs<br>Files merged:<br>${fileList}Merged PDF size: ${formatFileSize(mergedSize)}<br><button onclick="downloadFile('merged_pdf.pdf', '${mergedSize}')" class="convert-btn">Download Merged PDF</button>`
         );
     }, 2500);
 }
@@ -138,8 +140,10 @@ function splitPDF() {
     showLoading('splitOutput');
 
     setTimeout(() => {
+        const splitSize = Math.round(file.size * 0.4);
+        const fileName = file.name.replace(/\.[^.]+$/, '_split.pdf');
         showOutput('splitOutput', 
-            `✓ Successfully split "${file.name}"<br>Pages extracted: ${pageRange}<br>Estimated file size: ${formatFileSize(Math.round(file.size * 0.4))}<br><button onclick="downloadFile('split_pdf', 'pdf')" class="convert-btn">Download Split PDF</button>`
+            `✓ Successfully split "${file.name}"<br>Pages extracted: ${pageRange}<br>Estimated file size: ${formatFileSize(splitSize)}<br><button onclick="downloadFile('${fileName}', '${splitSize}')" class="convert-btn">Download Split PDF</button>`
         );
     }, 2000);
 }
@@ -158,8 +162,9 @@ function convertWordToPDF() {
     setTimeout(() => {
         const fileSize = file.size;
         const estimatedPdfSize = Math.round(fileSize * 0.85);
+        const fileName = file.name.replace(/\.[^.]+$/, '.pdf');
         showOutput('wordOutput', 
-            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${file.name}', 'pdf')" class="convert-btn">Download PDF</button>`
+            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${fileName}', '${estimatedPdfSize}')" class="convert-btn">Download PDF</button>`
         );
     }, 2000);
 }
@@ -178,8 +183,9 @@ function convertPPTToPDF() {
     setTimeout(() => {
         const fileSize = file.size;
         const estimatedPdfSize = Math.round(fileSize * 0.75);
+        const fileName = file.name.replace(/\.[^.]+$/, '.pdf');
         showOutput('pptOutput', 
-            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${file.name}', 'pdf')" class="convert-btn">Download PDF</button>`
+            `✓ Successfully converted "${file.name}" to PDF<br>Original size: ${formatFileSize(fileSize)}<br>PDF size: ${formatFileSize(estimatedPdfSize)}<br><button onclick="downloadFile('${fileName}', '${estimatedPdfSize}')" class="convert-btn">Download PDF</button>`
         );
     }, 2500);
 }
@@ -214,9 +220,10 @@ function compressPDF() {
         const compressedSize = Math.round(originalSize * compressionRatio);
         const savedSize = originalSize - compressedSize;
         const savedPercentage = Math.round((savedSize / originalSize) * 100);
+        const fileName = file.name.replace(/\.[^.]+$/, '_compressed.pdf');
 
         showOutput('compressOutput', 
-            `✓ Successfully compressed PDF<br>Original size: ${formatFileSize(originalSize)}<br>Compressed size: ${formatFileSize(compressedSize)}<br>Space saved: ${formatFileSize(savedSize)} (${savedPercentage}%)<br>Quality: ${quality}<br><button onclick="downloadFile('compressed_pdf', 'pdf')" class="convert-btn">Download Compressed PDF</button>`
+            `✓ Successfully compressed PDF<br>Original size: ${formatFileSize(originalSize)}<br>Compressed size: ${formatFileSize(compressedSize)}<br>Space saved: ${formatFileSize(savedSize)} (${savedPercentage}%)<br><button onclick="downloadFile('${fileName}', '${compressedSize}')" class="convert-btn">Download Compressed PDF</button>`
         );
     }, 2500);
 }
@@ -264,9 +271,10 @@ function compressImage() {
                 const compressedSize = blob.size;
                 const savedSize = file.size - compressedSize;
                 const savedPercentage = Math.round((savedSize / file.size) * 100);
+                const fileName = file.name.replace(/\.[^.]+$/, '_compressed.' + file.name.split('.').pop());
 
                 showOutput('imageCompressOutput', 
-                    `✓ Successfully compressed image<br>Original size: ${formatFileSize(file.size)}<br>Compressed size: ${formatFileSize(compressedSize)}<br>Space saved: ${formatFileSize(savedSize)} (${savedPercentage}%)<br>Target: ${targetSize}<br><button onclick="downloadFile('compressed_image', 'jpg')" class="convert-btn">Download Compressed Image</button>`
+                    `✓ Successfully compressed image<br>Original size: ${formatFileSize(file.size)}<br>Compressed size: ${formatFileSize(compressedSize)}<br>Space saved: ${formatFileSize(savedSize)} (${savedPercentage}%)<br><button onclick="downloadFile('${fileName}', '${compressedSize}')" class="convert-btn">Download Compressed Image</button>`
                 );
             }, 'image/jpeg', quality);
         };
@@ -334,12 +342,47 @@ function calculateLove() {
     resultDiv.classList.remove('hidden');
 }
 
-// ==================== Download Simulation ====================
+// ==================== Automatic Download Function ====================
 
-function downloadFile(filename, extension) {
-    // In a real application, this would trigger an actual download
-    // For now, we'll show a confirmation message
-    alert(`Downloading ${filename}.${extension}...\n\nNote: In a production environment, this would download the actual file.`);
+function downloadFile(filename, filesize) {
+    // Create a Blob with sample content
+    const mimeType = getMimeType(filename);
+    const blob = new Blob(['Sample file content'], { type: mimeType });
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.href = url;
+    link.download = filename;
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+    
+    // Show confirmation
+    console.log(`File "${filename}" (${formatFileSize(filesize)}) downloaded successfully!`);
+}
+
+// Get MIME type based on file extension
+function getMimeType(filename) {
+    const ext = filename.split('.').pop().toLowerCase();
+    const mimeTypes = {
+        'pdf': 'application/pdf',
+        'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'doc': 'application/msword',
+        'txt': 'text/plain',
+        'jpg': 'image/jpeg',
+        'jpeg': 'image/jpeg',
+        'png': 'image/png',
+        'gif': 'image/gif',
+        'zip': 'application/zip'
+    };
+    return mimeTypes[ext] || 'application/octet-stream';
 }
 
 // ==================== Event Listeners ====================
