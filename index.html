@@ -30,12 +30,12 @@
             z-index: 1000;
         }
 
-        /* Responsive SVG Logo Brand Setup */
         .brand-container {
             display: flex;
             align-items: center;
             text-decoration: none;
             gap: 12px;
+            cursor: pointer;
         }
 
         .logo-text-wrapper {
@@ -73,6 +73,7 @@
             font-weight: 600;
             font-size: 15px;
             transition: color 0.2s;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -87,38 +88,133 @@
             box-shadow: 0 2px 5px rgba(211, 47, 47, 0.2);
         }
 
-        .btn-premium:hover {
-            background: #b71c1c;
-        }
-
-        /* Hero Section */
+        /* Hero / Main dynamic workspace */
         .hero {
             text-align: center;
-            padding: 70px 20px 50px 20px;
+            padding: 50px 20px;
             background: #ffffff;
             border-bottom: 1px solid #eef2f5;
         }
 
-        /* Center Showcase Logo for Landing Page */
         .hero-logo-showcase {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px auto;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px auto;
         }
 
         .hero h1 {
-            font-size: 38px;
+            font-size: 36px;
             color: #222222;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             color: #666666;
             max-width: 650px;
-            margin: 0 auto;
+            margin: 0 auto 25px auto;
             line-height: 1.6;
+        }
+
+        /* Live Application Working Zone */
+        .workspace-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: none; /* Hidden until a tool is chosen */
+        }
+
+        .upload-box {
+            background: #fff;
+            border: 3px dashed #d32f2f;
+            border-radius: 16px;
+            padding: 40px 20px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            position: relative;
+        }
+
+        .upload-box.dragover {
+            background: #ffebee;
+            border-color: #b71c1c;
+        }
+
+        .upload-box icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .upload-box h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .upload-box p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* File input element hidden purposefully */
+        #file-input {
+            display: none;
+        }
+
+        /* Processing and Success Screen States */
+        .status-screen {
+            display: none;
+            padding: 30px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #d32f2f;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn-action {
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-action:hover {
+            background: #1b5e20;
+        }
+
+        .btn-reset {
+            display: inline-block;
+            background: #757575;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 13px;
+            cursor: pointer;
         }
 
         /* Tools Grid Layout */
@@ -143,7 +239,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
             border: 1px solid #eef2f5;
-            border-top: 4px solid #d32f2f; /* Matching Red Accent Brand Line */
+            border-top: 4px solid #d32f2f;
         }
 
         .tool-card:hover {
@@ -184,7 +280,7 @@
 <body>
 
     <header>
-        <a href="#" class="brand-container">
+        <div class="brand-container" onclick="resetToHome()">
             <svg width="42" height="42" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 440C180 380 70 290 70 185C70 115 125 60 195 60C218 60 236 66 250 78C264 66 282 60 305 60C375 60 430 115 430 185C430 250 390 310 340 360" stroke="url(#logo-grad)" stroke-width="32" stroke-linecap="round"/>
                 <rect x="160" y="150" width="180" height="200" rx="15" fill="url(#logo-grad)"/>
@@ -201,18 +297,17 @@
                 <div class="logo-main-text">PDF <span>LOVER</span></div>
                 <div class="logo-tagline">Sharing & Connecting Documents</div>
             </div>
-        </a>
+        </div>
         <nav>
-            <a href="#">Merge PDF</a>
-            <a href="#">Split PDF</a>
-            <a href="#">Compress</a>
-            <a href="#">Convert</a>
-            <a href="#" class="btn-premium">Go Premium</a>
+            <a onclick="openTool('Merge PDF')">Merge PDF</a>
+            <a onclick="openTool('Split PDF')">Split PDF</a>
+            <a onclick="openTool('Compress PDF')">Compress</a>
+            <a class="btn-premium">Go Premium</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-logo-showcase">
+        <div id="home-graphic" class="hero-logo-showcase">
             <svg width="100%" height="100%" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 440C180 380 70 290 70 185C70 115 125 60 195 60C218 60 236 66 250 78C264 66 282 60 305 60C375 60 430 115 430 185C430 250 390 310 340 360" stroke="url(#hero-logo-grad)" stroke-width="32" stroke-linecap="round"/>
                 <rect x="160" y="150" width="180" height="200" rx="15" fill="url(#hero-logo-grad)"/>
@@ -226,44 +321,70 @@
                 </defs>
             </svg>
         </div>
-        <h1>Every tool you need to work with PDFs in one place</h1>
-        <p>Welcome to <strong>PDF LOVER</strong>. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.</p>
+        
+        <h1 id="main-title">Every tool you need to work with PDFs in one place</h1>
+        <p id="main-subtitle">Welcome to PDF LOVER. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.</p>
+
+        <div class="workspace-container" id="app-workspace">
+            <div class="upload-box" id="drop-zone" onclick="triggerFileInput()">
+                <span style="font-size: 50px;">📥</span>
+                <h3 id="upload-box-title">Select files to upload</h3>
+                <p>or drag and drop files here</p>
+                <input type="file" id="file-input" onchange="handleFileSelect(event)">
+            </div>
+
+            <div class="status-screen" id="status-area">
+                <div id="loading-state">
+                    <div class="spinner"></div>
+                    <h3 id="status-title">Processing file...</h3>
+                    <p>Optimizing your data layers carefully.</p>
+                </div>
+                <div id="success-state" style="display:none;">
+                    <span style="font-size: 50px;">🎉</span>
+                    <h3 style="margin: 10px 0;">Task Complete!</h3>
+                    <p id="file-info-text" style="color:#555; margin-bottom: 15px; font-weight: bold;"></p>
+                    <button class="btn-action" onclick="simulateDownload()">Download Processed File</button>
+                    <br>
+                    <div class="btn-reset" onclick="resetWorkspaceOnly()">Upload another file</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="container">
+    <div class="container" id="tools-section">
         <div class="tools-grid">
             
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('Merge PDF')">
                 <div class="tool-icon">📂</div>
                 <h3>Merge PDF</h3>
                 <p>Combine multiple PDF files into a single structured document effortlessly.</p>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('Split PDF')">
                 <div class="tool-icon">✂️</div>
                 <h3>Split PDF</h3>
                 <p>Extract exact pages or isolate separate sets into independent files.</p>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('Compress PDF')">
                 <div class="tool-icon">🗜️</div>
                 <h3>Compress PDF</h3>
                 <p>Shrink file size instantly while retaining maximum presentation quality.</p>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('PDF to Word')">
                 <div class="tool-icon">📝</div>
                 <h3>PDF to Word</h3>
                 <p>Convert text and tables from PDF layouts into editable Word files.</p>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('Excel to PDF')">
                 <div class="tool-icon">📊</div>
                 <h3>Excel to PDF</h3>
                 <p>Transform raw spreadsheets accurately into perfectly aligned document views.</p>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" onclick="openTool('JPG to PDF')">
                 <div class="tool-icon">🖼️</div>
                 <h3>JPG to PDF</h3>
                 <p>Turn images and scans into standardized, clean PDF attachments.</p>
@@ -277,5 +398,103 @@
         <span style="font-size: 12px; color: #777;">Sharing & Connecting Documents</span>
     </footer>
 
+    <script>
+        let currentActiveTool = "";
+        const dropZone = document.getElementById('drop-zone');
+
+        // Navigates and transforms interface state context into specific tool workspace
+        function openTool(toolName) {
+            currentActiveTool = toolName;
+            
+            // Hide dashboard grid graphic elements
+            document.getElementById('home-graphic').style.display = 'none';
+            document.getElementById('tools-section').style.display = 'none';
+            
+            // Change Text elements contextually 
+            document.getElementById('main-title').innerText = toolName;
+            document.getElementById('main-subtitle').innerText = `Upload your files here to perform the dynamic ${toolName} engine processes safely.`;
+            document.getElementById('upload-box-title').innerText = `Select files to ${toolName}`;
+            
+            // Unveil Workspace block
+            document.getElementById('app-workspace').style.display = 'block';
+            resetWorkspaceOnly();
+        }
+
+        // Returns app view to the main menu choice boards
+        function resetToHome() {
+            document.getElementById('home-graphic').style.display = 'block';
+            document.getElementById('tools-section').style.display = 'flex';
+            document.getElementById('tools-section').style.display = 'block';
+            document.getElementById('app-workspace').style.display = 'none';
+            
+            document.getElementById('main-title').innerText = "Every tool you need to work with PDFs in one place";
+            document.getElementById('main-subtitle').innerText = "Welcome to PDF LOVER. Your web platform to merge, split, compress, and convert document formats seamlessly. Free, secure, and fast.";
+        }
+
+        function triggerFileInput() {
+            document.getElementById('file-input').click();
+        }
+
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            if(files.length > 0) {
+                processUploadedFileSimulation(files[0].name);
+            }
+        }
+
+        // Processes simulated data timelines for processing loading wheels visual transitions
+        function processUploadedFileSimulation(fileName) {
+            dropZone.style.display = 'none';
+            const statusArea = document.getElementById('status-area');
+            const loadingState = document.getElementById('loading-state');
+            const successState = document.getElementById('success-state');
+            
+            statusArea.style.display = 'block';
+            loadingState.style.display = 'block';
+            successState.style.display = 'none';
+            document.getElementById('status-title').innerText = `Processing file for ${currentActiveTool}...`;
+
+            // Wait 2.5 seconds to mock real file processing engine delays
+            setTimeout(() => {
+                loadingState.style.display = 'none';
+                successState.style.display = 'block';
+                document.getElementById('file-info-text').innerText = `Target: ${fileName} successfully processed!`;
+            }, 2500);
+        }
+
+        function simulateDownload() {
+            alert(`Success! Downloading your processed ${currentActiveTool} document directly from PDF LOVER servers now.`);
+            resetToHome();
+        }
+
+        function resetWorkspaceOnly() {
+            dropZone.style.display = 'block';
+            document.getElementById('status-area').style.display = 'none';
+            document.getElementById('file-input').value = "";
+        }
+
+        // File Drag & Drop visual listening interactions hooks
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+            }, false);
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if(files.length > 0) {
+                processUploadedFileSimulation(files[0].name);
+            }
+        });
+    </script>
 </body>
 </html>
