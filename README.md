@@ -1,386 +1,481 @@
-
-# 📄 PDFLover - Complete Document & Image Conversion Hub
-
-![PDFLover](https://img.shields.io/badge/PDFLover-v1.0-blue?style=flat-square)
-![HTML5](https://img.shields.io/badge/HTML5-Responsive-orange?style=flat-square)
-![License](https://img.shields.io/badge/License-Open%20Source-green?style=flat-square)
-
-## 🌟 Overview
-
-**PDFLover** is a comprehensive, browser-based document and image conversion platform that provides high-quality, easy-to-use tools for all your conversion needs. With 10 powerful features and a beautiful, responsive design, PDFLover makes document management effortless.
-
----
-
-## ✨ Features
-
-### 1. 📄 **DOC to PDF**
-Convert Microsoft Word documents (.doc, .docx) to PDF format with perfect formatting preservation.
-- Supports all Word versions
-- Maintains formatting and styles
-- High-quality output
-
-### 2. ↔️ **PDF to DOC**
-Extract and convert PDF documents back to editable Word documents.
-- Extract text and formatting
-- Create editable documents
-- Perfect for document editing
-
-### 3. 🖼️ **Image to PDF**
-Transform single or multiple images into a professional PDF document.
-- Supports all image formats (JPG, PNG, GIF, WebP, etc.)
-- Batch conversion
-- Maintain aspect ratio
-
-### 4. 📚 **Merge Multiple PDFs**
-Combine 2 or more PDF files into a single, organized document.
-- Merge unlimited PDFs
-- Maintain original formatting
-- Reorder pages before merging
-
-### 5. ✂️ **Split PDF**
-Extract specific pages or ranges from a PDF document.
-- Extract single or multiple page ranges
-- Preserve quality
-- Support complex ranges (e.g., 1-5, 10-15, 20)
-
-### 6. 📝 **Word to PDF**
-Professional conversion of Word documents (.docx, .odt) to PDF.
-- Preserve all formatting
-- High-quality conversion
-- Support for complex documents
-
-### 7. 📊 **PowerPoint to PDF**
-Convert presentations (.ppt, .pptx) to PDF format.
-- Slide-by-slide conversion
-- Maintain animations and transitions
-- Perfect for sharing presentations
-
-### 8. 🗜️ **PDF Compression**
-Reduce PDF file size with customizable quality levels.
-- Three quality options: High, Medium, Low
-- Smart compression algorithm
-- Maintain readability
-
-### 9. 🎨 **Image Compression**
-Compress images to 200 KB or 50 KB with one click.
-- Two size options: 200KB and 50KB
-- Maintain quality
-- Support for all image formats
-
-### 10. 💕 **Love Calculator**
-Fun interactive tool to calculate love percentage between two names.
-- Unique algorithm based on names
-- Beautiful animated heart
-- Share-friendly results
-
----
-
-## 🎨 Design Highlights
-
-### Modern UI with Multiple Themes
-- **Gradient Color Scheme**: Beautiful purple-pink gradient palette
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
-- **Smooth Animations**: Floating cards, heart fill animations, smooth transitions
-- **Glassmorphism Effects**: Modern frosted glass UI elements
-- **Dark/Light Friendly**: Optimized for all screen conditions
-
-### Key Design Features
-- ✅ Sticky navigation bar for easy access
-- ✅ Hero section with call-to-action button
-- ✅ Feature overview cards with hover effects
-- ✅ Organized tool sections with visual hierarchy
-- ✅ Beautiful footer with branding
-- ✅ Loading animations for better UX
-- ✅ Success/Error message feedback
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- No installation required!
-
-### Usage
-
-1. **Visit the Website**: Open `index.html` in your browser
-2. **Choose a Tool**: Select the conversion or compression tool you need
-3. **Upload File(s)**: Use the file input to select your documents/images
-4. **Configure Options**: Select preferences (quality, size, page range, etc.)
-5. **Convert**: Click the conversion button
-6. **Download**: Get your converted file
-
-### Quick Start Examples
-
-#### Convert Word to PDF
-```
-1. Click "Convert Word to PDF"
-2. Select your .docx file
-3. Click "Convert to PDF"
-4. Download the result
-```
-
-#### Merge Multiple PDFs
-```
-1. Click "Merge Multiple PDFs"
-2. Select 2 or more PDF files
-3. Click "Merge PDFs"
-4. Download the merged document
-```
-
-#### Compress Image to 50KB
-```
-1. Click "Compress Image"
-2. Select your image
-3. Choose "50 KB" from dropdown
-4. Click "Compress Image"
-5. Download the optimized image
-```
-
-#### Calculate Love Percentage
-```
-1. Scroll to "Love Calculator" section
-2. Enter both names
-3. Click "Calculate Love %"
-4. View your love percentage!
-```
-
----
-
-## 📁 Project Structure
-
-```
-Pdflover/
-├── index.html          # Main HTML file with all features
-├── styles.css          # Comprehensive styling with themes
-├── script.js           # JavaScript functionality
-└── README.md           # This file
-```
-
-### File Descriptions
-
-**index.html**
-- Navigation bar with logo and links
-- Hero section with call-to-action
-- Features overview grid
-- Tools section with 10 conversion tools
-- Love calculator section
-- Footer
-
-**styles.css**
-- CSS variables for consistent theming
-- Responsive grid layouts
-- Modern animations and transitions
-- Gradient effects
-- Mobile-first responsive design
-
-**script.js**
-- File handling and validation
-- Conversion simulation functions
-- Compression algorithms
-- Love calculator algorithm
-- Event listeners and interactions
-- Download functionality
-
----
-
-## 🎯 Features in Detail
-
-### Quality Preservation
-All conversion tools maintain the highest possible quality:
-- Vector preservation in PDFs
-- Font embedding
-- Color accuracy
-- Layout integrity
-
-### Compression Algorithms
-Smart compression technology:
-- **PDF Compression**: Reduces file size by 20-60% without losing readability
-- **Image Compression**: Intelligently scales images while maintaining visual quality
-
-### Batch Processing
-Handle multiple files at once:
-- Merge unlimited PDFs
-- Convert multiple images to single PDF
-- Process multiple files efficiently
-
-### Security
-Your privacy is our priority:
-- Client-side processing (no server required)
-- Files not stored or transmitted
-- Instant local conversion
-
----
-
-## 💻 Browser Compatibility
-
-| Browser | Version | Support |
-|---------|---------|---------|
-| Chrome  | 90+     | ✅ Full |
-| Firefox | 88+     | ✅ Full |
-| Safari  | 14+     | ✅ Full |
-| Edge    | 90+     | ✅ Full |
-| Mobile  | All     | ✅ Full |
-
----
-
-## 🎨 Customization
-
-### Colors and Themes
-
-Edit CSS variables in `styles.css`:
-
-```css
-:root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
-    /* ... more variables */
-}
-```
-
-### Font Changes
-
-Replace font family in `styles.css`:
-
-```css
-body {
-    font-family: 'Your Font Name', sans-serif;
-}
-```
-
----
-
-## 📊 File Size Limits (Recommended)
-
-- **PDF Files**: Up to 500 MB
-- **Images**: Up to 50 MB each
-- **Word Documents**: Up to 100 MB
-- **PowerPoint**: Up to 200 MB
-
----
-
-## 🐛 Troubleshooting
-
-### Tool Not Working?
-1. Clear browser cache
-2. Try a different browser
-3. Check file format compatibility
-4. Ensure sufficient storage space
-
-### File Not Downloading?
-1. Check browser download settings
-2. Disable download blockers
-3. Allow pop-ups for the website
-4. Try a different browser
-
-### Slow Conversion?
-1. Close other browser tabs
-2. Reduce file size
-3. Try smaller file batches
-4. Restart your browser
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! To improve PDFLover:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
----
-
-## 📝 License
-
-This project is open source and available for personal and commercial use.
-
----
-
-## 🙏 Credits
-
-Created with ❤️ for document lovers everywhere.
-
-**Technologies Used:**
-- HTML5
-- CSS3 (with gradients, animations, flexbox, grid)
-- Vanilla JavaScript
-- Canvas API for image compression
-
----
-
-## 📞 Support
-
-For issues, suggestions, or questions:
-- Open an issue on GitHub
-- Check existing issues and discussions
-- Review the documentation
-
----
-
-## 🎓 Learning Resources
-
-This project demonstrates:
-- ✅ Modern HTML5 structure
-- ✅ Advanced CSS3 techniques
-- ✅ Vanilla JavaScript (no frameworks)
-- ✅ File handling and processing
-- ✅ Responsive web design
-- ✅ CSS animations and transitions
-- ✅ Canvas API usage
-- ✅ User experience best practices
-
----
-
-## 🚀 Future Enhancements
-
-Planned features:
-- [ ] Cloud storage integration
-- [ ] Batch processing queue
-- [ ] Advanced PDF editing
-- [ ] OCR capabilities
-- [ ] API integration
-- [ ] Dark mode toggle
-- [ ] Multi-language support
-- [ ] Progress bars for conversions
-
----
-
-## 📈 Performance
-
-**Fast & Efficient:**
-- Optimized file compression
-- Minimal dependencies
-- Quick processing times
-- Low memory usage
-
----
-
-## ✅ Checklist for Each Tool
-
-- [x] DOC to PDF - Complete
-- [x] PDF to DOC - Complete
-- [x] Image to PDF - Complete
-- [x] Merge PDFs - Complete
-- [x] Split PDF - Complete
-- [x] Word to PDF - Complete
-- [x] PowerPoint to PDF - Complete
-- [x] PDF Compression - Complete
-- [x] Image Compression - Complete
-- [x] Love Calculator - Complete
-
----
-
-## 🎉 Thank You!
-
-Thank you for using **PDFLover**! We hope you enjoy the seamless document conversion experience.
-
-**Made with 💕 by PDFLover Team**
-
----
-
-**Last Updated:** June 2026
-**Version:** 1.0.0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Teaching SG | Premium Physics & Exam Portal</title>
+    <style>
+        /* Modern CSS Variables for Design Consistency */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-primary: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Container Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.15), transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-primary);
+            color: var(--text-main);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Core Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* App Module Workspace (Dashboard Style) */
+        .workspace-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Two Column Ledger Split Layout */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Receipt Preview Styling */
+        .receipt-box {
+            background-color: var(--bg-dark);
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+        }
+
+        .receipt-header {
+            text-align: center;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .receipt-header h4 {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .receipt-row .label {
+            color: var(--text-muted);
+        }
+
+        .receipt-row .value {
+            font-weight: 600;
+        }
+
+        .receipt-total {
+            border-top: 1px dashed var(--border);
+            padding-top: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .print-btn {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            align-self: flex-end;
+            transition: all 0.2s ease;
+        }
+
+        .print-btn:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">Youth Teaching <span>SG</span></div>
+            <button class="cta-btn" onclick="scrollToCalculator()">Tuition Desk</button>
+        </div>
+    </header>
+
+    <!-- Marketing Hero & Positioning -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Physics. Ace Competitive Exams.</h1>
+            <p>High-yield concept coaching and adaptive infinite testing setups explicitly compiled for Class IX-XII, JEE, NEET, and GATE physics parameters.</p>
+            <button class="cta-btn" onclick="scrollToCalculator()">Open Management Tool</button>
+        </div>
+    </section>
+
+    <!-- Visual Feature Blocks -->
+    <section class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Infinite Mock Tests</h3>
+                <p>Fully dynamic test structures leveraging adaptive shuffling arrays. Run testing cycles an infinite number of instances with varying question orders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔭</div>
+                <h3>Visual Physics Frameworks</h3>
+                <p>Complex mechanics, thermodynamics, and field properties translated into scannable logical diagrams removing processing friction.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Exam Target Modules</h3>
+                <p>Curated structures mapping weightage rules for competitive milestones across structural physics syllabi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Management/Billing Tool Application Workspace -->
+    <section class="container" id="ledger-zone">
+        <div class="workspace-section">
+            <h2 class="section-title">Tuition Management Workspace</h2>
+            <p class="section-desc">Live ledger terminal to instantly compute student enrollment streams, test access addons, and map clean receipt output templates.</p>
+            
+            <div class="split-layout">
+                <!-- Inputs Column Form -->
+                <div class="input-panel">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="Enter student's full name" value="Rahul Das">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courseTrack">Target Educational Track</label>
+                        <select id="courseTrack" class="form-control">
+                            <option value="Class IX-X Foundation" data-fee="1200">Class IX-X Foundation Core</option>
+                            <option value="Class XI-XII Board Prep" data-fee="1800" selected>Class XI-XII Higher Secondary</option>
+                            <option value="JEE / NEET Mastery" data-fee="2500">JEE / NEET Comprehensive Physics</option>
+                            <option value="GATE Technical Physics" data-fee="3500">GATE Advanced Technical Module</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="baseFee">Custom Base Monthly Fee (₹)</label>
+                        <input type="number" id="baseFee" class="form-control" value="1800">
+                    </div>
+
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="testSeriesAddon" checked>
+                        <span>Include Infinite Mock Test Portal Access (+ ₹300 Premium)</span>
+                    </label>
+                </div>
+
+                <!-- Live Dynamic Output Receipt Column -->
+                <div class="output-panel">
+                    <div class="receipt-box">
+                        <div>
+                            <div class="receipt-header">
+                                <h4>Youth Teaching SG</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Tuition Statement / Payment Invoice</p>
+                            </div>
+
+                            <div class="receipt-row">
+                                <span class="label">Invoice Date:</span>
+                                <span class="value" id="receiptDate">--/--/----</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Student Name:</span>
+                                <span class="value" id="receiptName">Rahul Das</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Course Stream:</span>
+                                <span class="value" id="receiptTrack">Class XI-XII Board Prep</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Base Fee Component:</span>
+                                <span class="value" id="receiptBase">₹1800.00</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Exam Portal Addon:</span>
+                                <span class="value" id="receiptAddon">₹300.00</span>
+                            </div>
+                        </div>
+
+                        <div class="receipt-total">
+                            <div>
+                                <span style="font-weight: 600; display: block; font-size: 0.9rem;">Total Due</span>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Inclusive of all modules</span>
+                            </div>
+                            <span class="total-amount" id="receiptTotal">₹2100.00</span>
+                        </div>
+                        
+                        <button class="print-btn" onclick="window.print()">Print Statement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational State Interactivity JavaScript -->
+    <script>
+        // DOM Element Pickers
+        const studentNameInput = document.getElementById('studentName');
+        const courseTrackSelect = document.getElementById('courseTrack');
+        const baseFeeInput = document.getElementById('baseFee');
+        const testSeriesCheck = document.getElementById('testSeriesAddon');
+
+        const receiptName = document.getElementById('receiptName');
+        const receiptTrack = document.getElementById('receiptTrack');
+        const receiptBase = document.getElementById('receiptBase');
+        const receiptAddon = document.getElementById('receiptAddon');
+        const receiptTotal = document.getElementById('receiptTotal');
+        const receiptDate = document.getElementById('receiptDate');
+
+        // Initialize Stamp Date
+        const today = new Date();
+        receiptDate.textContent = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+        // Update calculations logic
+        function updateReceipt() {
+            // Read Inputs
+            const name = studentNameInput.value.trim() || "Guest Student";
+            const selectedTrackText = courseTrackSelect.options[courseTrackSelect.selectedIndex].text;
+            let baseFee = parseFloat(baseFeeInput.value) || 0;
+            const addonFee = testSeriesCheck.checked ? 300 : 0;
+
+            // Calculate Total
+            const total = baseFee + addonFee;
+
+            // Bind to Output Display UI elements
+            receiptName.textContent = name;
+            receiptTrack.textContent = selectedTrackText;
+            receiptBase.textContent = `₹${baseFee.toFixed(2)}`;
+            receiptAddon.textContent = `₹${addonFee.toFixed(2)}`;
+            receiptTotal.textContent = `₹${total.toFixed(2)}`;
+        }
+
+        // Dropdown Auto-Fee Syncing Event
+        courseTrackSelect.addEventListener('change', () => {
+            const selectedOption = courseTrackSelect.options[courseTrackSelect.selectedIndex];
+            baseFeeInput.value = selectedOption.getAttribute('data-fee');
+            updateReceipt();
+        });
+
+        // Event Binding Listeners for real-time reactivity
+        studentNameInput.addEventListener('input', updateReceipt);
+        baseFeeInput.addEventListener('input', updateReceipt);
+        testSeriesCheck.addEventListener('change', updateReceipt);
+
+        // Smooth Scroll functional mapping
+        function scrollToCalculator() {
+            document.getElementById('ledger-zone').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Run Initial Pass on startup
+        updateReceipt();
+    </script>
+</body>
+</html>
