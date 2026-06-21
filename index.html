@@ -3,270 +3,479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDFLover - Document & Image Conversion Hub</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Youth Teaching SG | Premium Physics & Exam Portal</title>
+    <style>
+        /* Modern CSS Variables for Design Consistency */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-primary: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Container Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.15), transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-primary);
+            color: var(--text-main);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Core Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* App Module Workspace (Dashboard Style) */
+        .workspace-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Two Column Ledger Split Layout */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Receipt Preview Styling */
+        .receipt-box {
+            background-color: var(--bg-dark);
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+        }
+
+        .receipt-header {
+            text-align: center;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .receipt-header h4 {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .receipt-row .label {
+            color: var(--text-muted);
+        }
+
+        .receipt-row .value {
+            font-weight: 600;
+        }
+
+        .receipt-total {
+            border-top: 1px dashed var(--border);
+            padding-top: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .print-btn {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            align-self: flex-end;
+            transition: all 0.2s ease;
+        }
+
+        .print-btn:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                    <polyline points="13 2 13 9 20 9"></polyline>
-                </svg>
-                <span>PDFLover</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#love-calc">Love Calculator</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
+    <!-- Header Navigation Bar -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">Youth Teaching <span>SG</span></div>
+            <button class="cta-btn" onclick="scrollToCalculator()">Tuition Desk</button>
+        </div>
+    </header>
+
+    <!-- Marketing Hero & Positioning -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Your Complete Document Conversion Solution</h1>
-                <p>Convert, merge, compress, and transform your documents with ease</p>
-                <button class="cta-button">Get Started</button>
+            <h1>Master Physics. Ace Competitive Exams.</h1>
+            <p>High-yield concept coaching and adaptive infinite testing setups explicitly compiled for Class IX-XII, JEE, NEET, and GATE physics parameters.</p>
+            <button class="cta-btn" onclick="scrollToCalculator()">Open Management Tool</button>
+        </div>
+    </section>
+
+    <!-- Visual Feature Blocks -->
+    <section class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Infinite Mock Tests</h3>
+                <p>Fully dynamic test structures leveraging adaptive shuffling arrays. Run testing cycles an infinite number of instances with varying question orders.</p>
             </div>
-            <div class="hero-illustration">
-                <div class="floating-card"></div>
+            <div class="feature-card">
+                <div class="feature-icon">🔭</div>
+                <h3>Visual Physics Frameworks</h3>
+                <p>Complex mechanics, thermodynamics, and field properties translated into scannable logical diagrams removing processing friction.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Exam Target Modules</h3>
+                <p>Curated structures mapping weightage rules for competitive milestones across structural physics syllabi.</p>
             </div>
         </div>
     </section>
 
-    <!-- Features Overview Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Amazing Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>DOC to PDF</h3>
-                    <p>Convert Word documents to PDF with perfect formatting</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">↔️</div>
-                    <h3>PDF to DOC</h3>
-                    <p>Extract and convert PDF back to editable documents</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🖼️</div>
-                    <h3>Image to PDF</h3>
-                    <p>Transform images into professional PDF documents</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Merge PDF</h3>
-                    <p>Combine multiple PDFs into one seamless document</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✂️</div>
-                    <h3>Split PDF</h3>
-                    <p>Extract specific pages or divide PDFs effortlessly</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>PPT to PDF</h3>
-                    <p>Convert PowerPoint presentations to PDF format</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>Word to PDF</h3>
-                    <p>Professional conversion of Word documents to PDF</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗜️</div>
-                    <h3>PDF Compression</h3>
-                    <p>Reduce PDF file size without compromising quality</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Image Compression</h3>
-                    <p>Compress images to 200KB or 50KB with one click</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💕</div>
-                    <h3>Love Calculator</h3>
-                    <p>Fun tool to calculate love percentage with friends</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-    <section id="tools" class="tools">
-        <div class="container">
-            <h2>Our Tools</h2>
-
-            <!-- Doc to PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>📄 Convert DOC to PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="docFile" accept=".doc,.docx" class="file-input">
-                    <button onclick="convertDocToPDF()" class="convert-btn">Convert to PDF</button>
-                    <div id="docOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- PDF to DOC -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>↔️ Convert PDF to DOC</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="pdfFile" accept=".pdf" class="file-input">
-                    <button onclick="convertPDFToDoc()" class="convert-btn">Convert to DOC</button>
-                    <div id="pdfOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- Image to PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>🖼️ Convert Image to PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="imageFile" accept="image/*" multiple class="file-input">
-                    <button onclick="convertImageToPDF()" class="convert-btn">Convert to PDF</button>
-                    <div id="imageOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- Merge PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>📚 Merge Multiple PDFs</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="mergePdfFiles" accept=".pdf" multiple class="file-input">
-                    <button onclick="mergePDFs()" class="convert-btn">Merge PDFs</button>
-                    <div id="mergeOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- Split PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>✂️ Split PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="splitPdfFile" accept=".pdf" class="file-input">
-                    <div class="split-options">
-                        <label>Page Range (e.g., 1-5, 10-15):</label>
-                        <input type="text" id="pageRange" placeholder="Enter page numbers">
+    <!-- Interactive Management/Billing Tool Application Workspace -->
+    <section class="container" id="ledger-zone">
+        <div class="workspace-section">
+            <h2 class="section-title">Tuition Management Workspace</h2>
+            <p class="section-desc">Live ledger terminal to instantly compute student enrollment streams, test access addons, and map clean receipt output templates.</p>
+            
+            <div class="split-layout">
+                <!-- Inputs Column Form -->
+                <div class="input-panel">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="Enter student's full name" value="Rahul Das">
                     </div>
-                    <button onclick="splitPDF()" class="convert-btn">Split PDF</button>
-                    <div id="splitOutput" class="output"></div>
-                </div>
-            </div>
 
-            <!-- Word to PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>📝 Convert Word to PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="wordFile" accept=".doc,.docx,.odt" class="file-input">
-                    <button onclick="convertWordToPDF()" class="convert-btn">Convert to PDF</button>
-                    <div id="wordOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- PowerPoint to PDF -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>📊 Convert PowerPoint to PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="pptFile" accept=".ppt,.pptx" class="file-input">
-                    <button onclick="convertPPTToPDF()" class="convert-btn">Convert to PDF</button>
-                    <div id="pptOutput" class="output"></div>
-                </div>
-            </div>
-
-            <!-- PDF Compression -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>🗜️ Compress PDF</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="compressPdfFile" accept=".pdf" class="file-input">
-                    <div class="compression-options">
-                        <label>Compression Level:</label>
-                        <select id="pdfQuality">
-                            <option value="high">High Quality (Less compression)</option>
-                            <option value="medium" selected>Medium Quality</option>
-                            <option value="low">Low Quality (More compression)</option>
+                    <div class="form-group">
+                        <label for="courseTrack">Target Educational Track</label>
+                        <select id="courseTrack" class="form-control">
+                            <option value="Class IX-X Foundation" data-fee="1200">Class IX-X Foundation Core</option>
+                            <option value="Class XI-XII Board Prep" data-fee="1800" selected>Class XI-XII Higher Secondary</option>
+                            <option value="JEE / NEET Mastery" data-fee="2500">JEE / NEET Comprehensive Physics</option>
+                            <option value="GATE Technical Physics" data-fee="3500">GATE Advanced Technical Module</option>
                         </select>
                     </div>
-                    <button onclick="compressPDF()" class="convert-btn">Compress PDF</button>
-                    <div id="compressOutput" class="output"></div>
-                </div>
-            </div>
 
-            <!-- Image Compression -->
-            <div class="tool-section">
-                <div class="tool-header">
-                    <h3>🎨 Compress Image</h3>
-                </div>
-                <div class="tool-content">
-                    <input type="file" id="compressImageFile" accept="image/*" class="file-input">
-                    <div class="compression-options">
-                        <label>Target Size:</label>
-                        <select id="imageSize">
-                            <option value="200kb">200 KB</option>
-                            <option value="50kb">50 KB</option>
-                        </select>
+                    <div class="form-group">
+                        <label for="baseFee">Custom Base Monthly Fee (₹)</label>
+                        <input type="number" id="baseFee" class="form-control" value="1800">
                     </div>
-                    <button onclick="compressImage()" class="convert-btn">Compress Image</button>
-                    <div id="imageCompressOutput" class="output"></div>
+
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="testSeriesAddon" checked>
+                        <span>Include Infinite Mock Test Portal Access (+ ₹300 Premium)</span>
+                    </label>
+                </div>
+
+                <!-- Live Dynamic Output Receipt Column -->
+                <div class="output-panel">
+                    <div class="receipt-box">
+                        <div>
+                            <div class="receipt-header">
+                                <h4>Youth Teaching SG</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Tuition Statement / Payment Invoice</p>
+                            </div>
+
+                            <div class="receipt-row">
+                                <span class="label">Invoice Date:</span>
+                                <span class="value" id="receiptDate">--/--/----</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Student Name:</span>
+                                <span class="value" id="receiptName">Rahul Das</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Course Stream:</span>
+                                <span class="value" id="receiptTrack">Class XI-XII Board Prep</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Base Fee Component:</span>
+                                <span class="value" id="receiptBase">₹1800.00</span>
+                            </div>
+                            <div class="receipt-row">
+                                <span class="label">Exam Portal Addon:</span>
+                                <span class="value" id="receiptAddon">₹300.00</span>
+                            </div>
+                        </div>
+
+                        <div class="receipt-total">
+                            <div>
+                                <span style="font-weight: 600; display: block; font-size: 0.9rem;">Total Due</span>
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">Inclusive of all modules</span>
+                            </div>
+                            <span class="total-amount" id="receiptTotal">₹2100.00</span>
+                        </div>
+                        
+                        <button class="print-btn" onclick="window.print()">Print Statement</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Love Calculator Section -->
-    <section id="love-calc" class="love-calculator">
-        <div class="container">
-            <div class="love-card">
-                <h2>💕 Love Calculator 💕</h2>
-                <p>Find out your love percentage with someone special!</p>
-                
-                <div class="love-inputs">
-                    <input type="text" id="name1" placeholder="Your Name" class="love-input">
-                    <span class="plus-sign">+</span>
-                    <input type="text" id="name2" placeholder="Their Name" class="love-input">
-                </div>
-                
-                <button onclick="calculateLove()" class="love-button">Calculate Love %</button>
-                
-                <div id="loveResult" class="love-result hidden">
-                    <div class="result-names"></div>
-                    <div class="heart-container">
-                        <div class="heart-fill"></div>
-                        <div class="heart-percentage">0%</div>
-                    </div>
-                    <p class="love-message"></p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Operational State Interactivity JavaScript -->
+    <script>
+        // DOM Element Pickers
+        const studentNameInput = document.getElementById('studentName');
+        const courseTrackSelect = document.getElementById('courseTrack');
+        const baseFeeInput = document.getElementById('baseFee');
+        const testSeriesCheck = document.getElementById('testSeriesAddon');
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 PDFLover. All rights reserved. Made with ❤️</p>
-            <p>High-quality document conversion and transformation tools</p>
-        </div>
-    </footer>
+        const receiptName = document.getElementById('receiptName');
+        const receiptTrack = document.getElementById('receiptTrack');
+        const receiptBase = document.getElementById('receiptBase');
+        const receiptAddon = document.getElementById('receiptAddon');
+        const receiptTotal = document.getElementById('receiptTotal');
+        const receiptDate = document.getElementById('receiptDate');
 
-    <script src="script.js"></script>
+        // Initialize Stamp Date
+        const today = new Date();
+        receiptDate.textContent = today.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+        // Update calculations logic
+        function updateReceipt() {
+            // Read Inputs
+            const name = studentNameInput.value.trim() || "Guest Student";
+            const selectedTrackText = courseTrackSelect.options[courseTrackSelect.selectedIndex].text;
+            let baseFee = parseFloat(baseFeeInput.value) || 0;
+            const addonFee = testSeriesCheck.checked ? 300 : 0;
+
+            // Calculate Total
+            const total = baseFee + addonFee;
+
+            // Bind to Output Display UI elements
+            receiptName.textContent = name;
+            receiptTrack.textContent = selectedTrackText;
+            receiptBase.textContent = `₹${baseFee.toFixed(2)}`;
+            receiptAddon.textContent = `₹${addonFee.toFixed(2)}`;
+            receiptTotal.textContent = `₹${total.toFixed(2)}`;
+        }
+
+        // Dropdown Auto-Fee Syncing Event
+        courseTrackSelect.addEventListener('change', () => {
+            const selectedOption = courseTrackSelect.options[courseTrackSelect.selectedIndex];
+            baseFeeInput.value = selectedOption.getAttribute('data-fee');
+            updateReceipt();
+        });
+
+        // Event Binding Listeners for real-time reactivity
+        studentNameInput.addEventListener('input', updateReceipt);
+        baseFeeInput.addEventListener('input', updateReceipt);
+        testSeriesCheck.addEventListener('change', updateReceipt);
+
+        // Smooth Scroll functional mapping
+        function scrollToCalculator() {
+            document.getElementById('ledger-zone').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Run Initial Pass on startup
+        updateReceipt();
+    </script>
 </body>
 </html>
